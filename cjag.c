@@ -64,6 +64,7 @@ int main(int argc, char **argv) {
     config.cache_kill_count = config.cache_ways - 1;
     config.cache_slices = get_slices();
 
+    show_cache_info();
 
     struct option *long_options = getopt_get_long_options((getopt_arg_t *) options);
     ERROR_ON(!long_options, ERROR_OOM, config.color_output);
@@ -104,8 +105,7 @@ int main(int argc, char **argv) {
                 show_usage(argv[0], &config);
                 return 0;
             case ':':
-                printf_color(config.color_output, ERROR_TAG "Option [c]-%c[/c] requires an [y]argument[/y].\n",
-                             optopt);
+                printf_color(config.color_output, ERROR_TAG "Option [c]-%c[/c] requires an [y]argument[/y].\n", optopt);
                 printf("\n");
                 show_usage(argv[0], &config);
                 return 1;
@@ -326,5 +326,5 @@ void print_eviction_sets(void** addr, cjag_config_t* config) {
             void* v_addr = GET_EVICTION_SET(addr, i, config)[j];
             printf_color(config->color_output, "  %p\n", v_addr);
         }
-    }
+	}
 }

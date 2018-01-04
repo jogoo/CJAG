@@ -1,6 +1,6 @@
 OBJECTS = 	util/cache.o \
-		util/colorprint.o \
-		util/getopt_helper.o
+			util/colorprint.o \
+			util/getopt_helper.o
 
 FLAGS = -Wall -g -O3 -march=native -std=gnu11
 
